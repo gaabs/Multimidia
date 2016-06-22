@@ -31,7 +31,14 @@ public class skelleton : MonoBehaviour {
         if (curHealth != curHealthBar) {
             float x = ((curHealthBar - curHealth) * 0.01f);
             curHealthBar = curHealth;
-            healthbar.transform.localScale -= new Vector3(x,0,0);
+            if(healthbar.transform.localScale.x > x)
+            {
+                healthbar.transform.localScale -= new Vector3(x,0,0);
+            }
+            else
+            {
+                healthbar.transform.localScale = new Vector3(0, 0, 0);
+            }
         }
         AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo(0);
         count = Mathf.Round(asi.normalizedTime * 100f)/100f;
@@ -84,12 +91,12 @@ public class skelleton : MonoBehaviour {
         {
             if (transform.position.z>0)
             {
-                Vector3 b = new Vector3(a.x, a.y, a.z - 1f);
+                Vector3 b = new Vector3(a.x, a.y, a.z - 0.3f);
                 transform.position = b;
             }
             else
             {
-                Vector3 b = new Vector3(a.x, a.y, a.z + 1f);
+                Vector3 b = new Vector3(a.x, a.y, a.z + 0.3f);
                 transform.position = b;
             }
         }
@@ -97,12 +104,12 @@ public class skelleton : MonoBehaviour {
         {
             if (transform.position.x >0)
             {
-                Vector3 b = new Vector3(a.x - 1f, a.y, a.z );
+                Vector3 b = new Vector3(a.x - 0.3f, a.y, a.z );
                 transform.position = b;
             }
             else
             {
-                Vector3 b = new Vector3(a.x + 1f, a.y, a.z);
+                Vector3 b = new Vector3(a.x + 0.3f, a.y, a.z);
                 transform.position = b;
             }
         }

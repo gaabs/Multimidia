@@ -43,7 +43,14 @@ public class player : MonoBehaviour
         {
             float x = ((playerHealthBar - playerHealth) * 0.01f);
             playerHealthBar = playerHealth;
-            player.transform.localScale -= new Vector3(x, 0, 0);
+            if (player.transform.localScale.x > x)
+            {
+                player.transform.localScale -= new Vector3(x, 0, 0);
+            }
+            else
+            {
+                player.transform.localScale = new Vector3(0, 0, 0);
+            }
         }
         print(playerHealth);
     }
@@ -66,21 +73,11 @@ public class player : MonoBehaviour
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(100, 110, 100, 90), "ataque"))
+        if (Input.touchCount>0)
         {
             BeginEffect(num);
  //           GameObject skeleton = GameObject.Find("skeleton");
  //           skeleton.SendMessage("decreasingHealth");
-
-        }
-        if (GUI.Button(new Rect(100, 210, 100, 90), "Change Attack" )) {
-            if (num < 2) {
-                num++;
-            }
-            else
-            {
-                num = 0;
-            }
 
         }
         if (playerHealth <= 0)
