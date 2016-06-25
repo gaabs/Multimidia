@@ -73,7 +73,8 @@ public class player : MonoBehaviour
 
     void OnGUI()
     {
-        if (Input.touchCount>0)
+		//if (Input.touchCount>0 || Input.GetMouseButton(0))
+		if (GUI.Button(new Rect(100, 110, 100, 90), "ataque"))		
         {
             BeginEffect(num);
  //           GameObject skeleton = GameObject.Find("skeleton");
@@ -146,7 +147,7 @@ public class player : MonoBehaviour
     {
 //        velocity += (Input.acceleration*Time.fixedDeltaTime);
 //        transform.Translate(velocity);
-        transform.Rotate(Input.gyro.rotationRate);
+        transform.Rotate(-Input.gyro.rotationRate);
 
     }
 

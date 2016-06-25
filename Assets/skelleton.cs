@@ -15,7 +15,6 @@ public class skelleton : MonoBehaviour {
 	void Start () {
         count = 0;
         controle = 0;
-        atk = 100;
         animator = GetComponent<Animator>();
 		maxHealth = 100f;
 		curHealth = 100f;
